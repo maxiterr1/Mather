@@ -1,0 +1,14 @@
+C:\Users\carla\OneDrive\Documenti\PROGRAMMAZIONAZIONE\Expression\mather\bin\Debug\net8.0\mather.exe
+C:\Users\carla\OneDrive\Documenti\PROGRAMMAZIONAZIONE\Expression\mather\bin\Debug\net8.0\mather.deps.json
+C:\Users\carla\OneDrive\Documenti\PROGRAMMAZIONAZIONE\Expression\mather\bin\Debug\net8.0\mather.runtimeconfig.json
+C:\Users\carla\OneDrive\Documenti\PROGRAMMAZIONAZIONE\Expression\mather\bin\Debug\net8.0\mather.dll
+C:\Users\carla\OneDrive\Documenti\PROGRAMMAZIONAZIONE\Expression\mather\bin\Debug\net8.0\mather.pdb
+C:\Users\carla\OneDrive\Documenti\PROGRAMMAZIONAZIONE\Expression\mather\obj\Debug\net8.0\mather.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\carla\OneDrive\Documenti\PROGRAMMAZIONAZIONE\Expression\mather\obj\Debug\net8.0\mather.AssemblyInfoInputs.cache
+C:\Users\carla\OneDrive\Documenti\PROGRAMMAZIONAZIONE\Expression\mather\obj\Debug\net8.0\mather.AssemblyInfo.cs
+C:\Users\carla\OneDrive\Documenti\PROGRAMMAZIONAZIONE\Expression\mather\obj\Debug\net8.0\mather.csproj.CoreCompileInputs.cache
+C:\Users\carla\OneDrive\Documenti\PROGRAMMAZIONAZIONE\Expression\mather\obj\Debug\net8.0\mather.dll
+C:\Users\carla\OneDrive\Documenti\PROGRAMMAZIONAZIONE\Expression\mather\obj\Debug\net8.0\refint\mather.dll
+C:\Users\carla\OneDrive\Documenti\PROGRAMMAZIONAZIONE\Expression\mather\obj\Debug\net8.0\mather.pdb
+C:\Users\carla\OneDrive\Documenti\PROGRAMMAZIONAZIONE\Expression\mather\obj\Debug\net8.0\mather.genruntimeconfig.cache
+C:\Users\carla\OneDrive\Documenti\PROGRAMMAZIONAZIONE\Expression\mather\obj\Debug\net8.0\ref\mather.dll
