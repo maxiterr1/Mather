@@ -7,6 +7,11 @@ class Expression
         int openParenthesisCount = 0, closeParenthesisCount = 0;
         foreach (char c in charExpression)
 		{
+            if (!ExprValidCharacter(c))
+            {
+                Console.WriteLine("Errore di sintassi: Ci sono dei caratteri non validi!");
+                return null;
+            }
             if (c == '(')
                 openParenthesisCount++;
             else if (c == ')')
@@ -61,7 +66,7 @@ class Expression
                         while (!bastaNumeri);
 
                         //Invertiamo i numeri. Vengono "letti" da destra a sinistra perciò saranno al contrario
-                        //numeriPrima[count[0]] = Programma.Reverse(numeriPrima[count[0]]);
+                        numeriPrima[count[0]] = Programma.Reverse(numeriPrima[count[0]]);
                         Console.WriteLine(numeriPrima[count[0]]);
                     }
                     count[0]++;
@@ -76,20 +81,16 @@ class Expression
                 }
             }
             List<char> insideParenthesis = [];
-            //Continuare == 1
-            if (openParenthesisCount != 1)
+            for (int i = openParenthesis.Last() + 1; i < closeParenthesis.Last(); i++)
+                insideParenthesis.Add(charExpression[i]);
+            char last = insideParenthesis.Last();
+            //Continua: Fare un loop qui
+            if (last == '+' || last == '-' || last == '^' || last == '*' || last == '/' || last == '.')
             {
-                for (int i = openParenthesis.Last() + 1; i < closeParenthesis.Last() - 1; i++)
-                {
-                    if (ExprValidCharacter(charExpression[i]))
-                        insideParenthesis.Add(charExpression[i]);
-                    else
-                    {
-                        Console.WriteLine("Non validooooo");
-                        return null;
-                    }
-                }
+                Console.WriteLine($"Errore di sintassi: Non puoi inserire '{last}' come ultimo carattere nella parentesi");
+                return null;
             }
+            
         }
 
         return openParenthesisCount.ToString();
@@ -97,21 +98,17 @@ class Expression
 
     public static bool ExprValidCharacter(char c)
     {
-        char[] permessi = {'+', '-', '*', '/', '^', '.'};
-        for (int i = 0; i < permessi.Length; i++)
-        {
-            if (c == permessi[i])
-            {
-                return true;
-            }
-        }
+        char[] permessi = ['+', '-', '*', '/', '^', '.', '(', ')'];
         if (char.IsNumber(c))
-        {
             return true;
-        }
         else
         {
-            return false;
+            for (int i = 0; i < permessi.Length; i++)
+            {
+                if (c == permessi[i])
+                    return true;
+            }
         }
+        return false;
     }
 }
