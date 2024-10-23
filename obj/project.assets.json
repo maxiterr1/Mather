@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "/home/carloter/.nuget/packages/": {}
+    "C:\\Users\\carla\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/carloter/Documenti/Programiz/mather/Mather/mather.csproj",
+      "projectUniqueName": "C:\\Users\\carla\\GameMakerProjects\\Mather\\mather.csproj",
       "projectName": "mather",
-      "projectPath": "/home/carloter/Documenti/Programiz/mather/Mather/mather.csproj",
-      "packagesPath": "/home/carloter/.nuget/packages/",
-      "outputPath": "/home/carloter/Documenti/Programiz/mather/Mather/obj/",
+      "projectPath": "C:\\Users\\carla\\GameMakerProjects\\Mather\\mather.csproj",
+      "packagesPath": "C:\\Users\\carla\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\carla\\GameMakerProjects\\Mather\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/carloter/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\carla\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -64,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

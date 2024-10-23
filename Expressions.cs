@@ -24,7 +24,12 @@ class Expression
             Console.WriteLine("Errore di sintassi: " + chedire + " o viceversa.");
             return null;
         }
-
+        char last = charExpression.Last();
+        if (last == '+' || last == '-' || last == '^' || last == '*' || last == '/' || last == '.')
+        {
+            Console.WriteLine($"Errore di sintassi: Non puoi inserire '{last}' come ultimo carattere dell'espressione");
+            return null;
+        }
         int[] openParenthesis = new int[openParenthesisCount];
         int[] closeParenthesis = new int[closeParenthesisCount];
         char charPrima;
@@ -59,9 +64,7 @@ class Expression
                                     bastaNumeri = true;
                             }
                             else
-                            {
                                 bastaNumeri = true;
-                            }
                         }
                         while (!bastaNumeri);
 
@@ -83,7 +86,7 @@ class Expression
             List<char> insideParenthesis = [];
             for (int i = openParenthesis.Last() + 1; i < closeParenthesis.Last(); i++)
                 insideParenthesis.Add(charExpression[i]);
-            char last = insideParenthesis.Last();
+            last = insideParenthesis.Last();
             //Continua: Fare un loop qui
             if (last == '+' || last == '-' || last == '^' || last == '*' || last == '/' || last == '.')
             {
@@ -93,7 +96,7 @@ class Expression
             
         }
 
-        return openParenthesisCount.ToString();
+        return "";//openParenthesisCount.ToString();
     }
 
     public static bool ExprValidCharacter(char c)
@@ -104,10 +107,8 @@ class Expression
         else
         {
             for (int i = 0; i < permessi.Length; i++)
-            {
                 if (c == permessi[i])
                     return true;
-            }
         }
         return false;
     }

@@ -18,7 +18,7 @@ namespace Program
                     solution = Expression.Execute(espr);
                     Console.WriteLine(solution);
                     }
-                    while (solution == null);
+                    while (solution == null || solution == "");
                     break;
                 case 2:
                     string test = "3242";
