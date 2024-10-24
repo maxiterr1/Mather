@@ -3,13 +3,15 @@ class Expression
 {
     public static string? Execute(string expression)
     {
+        if (expression == "")
+            return null;
         char[] charExpression = expression.ToCharArray();
         int openParenthesisCount = 0, closeParenthesisCount = 0;
         foreach (char c in charExpression)
 		{
             if (!ExprValidCharacter(c))
             {
-                Console.WriteLine("Errore di sintassi: Ci sono dei caratteri non validi!");
+                Programma.ErroreSintassi("Ci sono dei caratteri non validi!");
                 return null;
             }
             if (c == '(')
@@ -21,13 +23,13 @@ class Expression
         {
             int differenza = Math.Abs(openParenthesisCount - closeParenthesisCount);
             string chedire = differenza == 1 ? "C'è una parentesi aperta non chiusa" : $"Ci sono {differenza} parentesi aperte non chiuse";
-            Console.WriteLine("Errore di sintassi: " + chedire + " o viceversa.");
+            Programma.ErroreSintassi(chedire + " o viceversa.");
             return null;
         }
         char last = charExpression.Last();
         if (last == '+' || last == '-' || last == '^' || last == '*' || last == '/' || last == '.')
         {
-            Console.WriteLine($"Errore di sintassi: Non puoi inserire '{last}' come ultimo carattere dell'espressione");
+            Programma.ErroreSintassi($"Non puoi inserire '{last}' come ultimo carattere dell'espressione");
             return null;
         }
         int[] openParenthesis = new int[openParenthesisCount];
@@ -36,7 +38,7 @@ class Expression
         string[] numeriPrima = new string[openParenthesisCount];
         if (openParenthesisCount != 0)
         {
-            int[] count = [0, 0];
+            int[] count = [0, 0]; //Il primo valore conta le parentesi aperte, il secondo le chiuse
 
             //Ciclo for che conta le parentesi
             for (int i = 0; i < charExpression.Length; i++)
@@ -70,7 +72,7 @@ class Expression
 
                         //Invertiamo i numeri. Vengono "letti" da destra a sinistra perciò saranno al contrario
                         numeriPrima[count[0]] = Programma.Reverse(numeriPrima[count[0]]);
-                        Console.WriteLine(numeriPrima[count[0]]);
+                        Console.WriteLine(numeriPrima[count[0]]);        
                     }
                     count[0]++;
                     Console.WriteLine($"Parentesi aperta trovata alla posizione {i}");
@@ -83,6 +85,13 @@ class Expression
                         break;       
                 }
             }
+            int[] debug = [closeParenthesis[count[1] - 1], openParenthesis[count[0] - 1]];
+                Console.WriteLine(debug[0]);
+                //Da continuare qui!
+                if (closeParenthesis[count[1] - 1] - openParenthesis[count[0] - 1] == 1)
+                {
+                    Programma.ErroreSintassi("ciao");
+                }
             List<char> insideParenthesis = [];
             for (int i = openParenthesis.Last() + 1; i < closeParenthesis.Last(); i++)
                 insideParenthesis.Add(charExpression[i]);
@@ -90,13 +99,13 @@ class Expression
             //Continua: Fare un loop qui
             if (last == '+' || last == '-' || last == '^' || last == '*' || last == '/' || last == '.')
             {
-                Console.WriteLine($"Errore di sintassi: Non puoi inserire '{last}' come ultimo carattere nella parentesi");
+                Programma.ErroreSintassi($"Non puoi inserire '{last}' come ultimo carattere nella parentesi");
                 return null;
             }
             
         }
 
-        return "";//openParenthesisCount.ToString();
+        return null;//openParenthesisCount.ToString();
     }
 
     public static bool ExprValidCharacter(char c)

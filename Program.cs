@@ -13,12 +13,12 @@ namespace Program
                     string? solution = null;
                     do
                     {
-                    Console.WriteLine("Inserisci espressione: ");
-                    string? espr = Console.ReadLine();
-                    solution = Expression.Execute(espr);
-                    Console.WriteLine(solution);
+                        Console.WriteLine("Inserisci espressione: ");
+                        string? espr = Console.ReadLine();
+                        solution = Expression.Execute(espr);
+                        Console.WriteLine(solution);
                     }
-                    while (solution == null || solution == "");
+                    while (solution == null);
                     break;
                 case 2:
                     string test = "3242";
@@ -36,7 +36,7 @@ namespace Program
                 try
                 {
                     scelta = int.Parse(Console.ReadLine());
-                    if (scelta > MaxValue + 1)
+                    if (scelta > MaxValue)
                         throw new Exception();
                     valido = true;
                 }
@@ -53,6 +53,10 @@ namespace Program
             char[] charArray = s.ToCharArray();
             Array.Reverse(charArray);
             return new string(charArray);
+        }
+
+        public static void ErroreSintassi(string err){
+            Console.Write("Errore di sintassi: " + err);
         }
     }
 }

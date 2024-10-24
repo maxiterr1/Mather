@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = mather
-build_property.ProjectDir = C:\Users\carla\GameMakerProjects\Mather\
+build_property.ProjectDir = /home/carloter/Documenti/Programiz/mather/Mather/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
