@@ -85,24 +85,24 @@ class Expression
                         break;       
                 }
             }
-            int[] debug = [closeParenthesis[count[1] - 1], openParenthesis[count[0] - 1]];
-                Console.WriteLine(debug[0]);
-                //Da continuare qui!
-                if (closeParenthesis[count[1] - 1] - openParenthesis[count[0] - 1] == 1)
+            //Da continuare: insideParenthesis diventa array?
+            List<char> insideParenthesis = [];
+            for (int i = 0; i < openParenthesisCount; i++)
+            {
+                for (int j = openParenthesis.Count() + 1; j < closeParenthesis.Last(); j++)
+                    insideParenthesis.Add(charExpression[j]);
+                if (insideParenthesis.Count == 0)
                 {
                     Programma.ErroreSintassi("ciao");
+                    return null;
                 }
-            List<char> insideParenthesis = [];
-            for (int i = openParenthesis.Last() + 1; i < closeParenthesis.Last(); i++)
-                insideParenthesis.Add(charExpression[i]);
-            last = insideParenthesis.Last();
-            //Continua: Fare un loop qui
-            if (last == '+' || last == '-' || last == '^' || last == '*' || last == '/' || last == '.')
-            {
-                Programma.ErroreSintassi($"Non puoi inserire '{last}' come ultimo carattere nella parentesi");
-                return null;
+                last = insideParenthesis.Last();
+                if (last == '+' || last == '-' || last == '^' || last == '*' || last == '/' || last == '.')
+                {
+                    Programma.ErroreSintassi($"Non puoi inserire '{last}' come ultimo carattere nella parentesi");
+                    return null;
+                }
             }
-            
         }
 
         return null;//openParenthesisCount.ToString();
