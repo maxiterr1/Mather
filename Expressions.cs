@@ -85,24 +85,27 @@ class Expression
                         break;       
                 }
             }
-            //Da continuare: insideParenthesis diventa array?
-            List<char> insideParenthesis = [];
+            List<List<char>> insideParenthesis = new List<List<char>>();
             for (int i = 0; i < openParenthesisCount; i++)
             {
+                insideParenthesis.Add(new List<char>());
+                //Continuare: cammbiare openParenthesis.Count() + 1; j < closeParenthesis.Last()
+                //Guardare appunti sul quadernino
                 for (int j = openParenthesis.Count() + 1; j < closeParenthesis.Last(); j++)
-                    insideParenthesis.Add(charExpression[j]);
-                if (insideParenthesis.Count == 0)
+                    insideParenthesis[i].Add(charExpression[j]);
+                if (insideParenthesis[i].Count == 0)
                 {
                     Programma.ErroreSintassi("ciao");
                     return null;
                 }
-                last = insideParenthesis.Last();
+                last = insideParenthesis[i].Last();
                 if (last == '+' || last == '-' || last == '^' || last == '*' || last == '/' || last == '.')
                 {
                     Programma.ErroreSintassi($"Non puoi inserire '{last}' come ultimo carattere nella parentesi");
                     return null;
                 }
             }
+            Console.WriteLine($"ins {insideParenthesis[0].ElementAt(0)}");
         }
 
         return null;//openParenthesisCount.ToString();
