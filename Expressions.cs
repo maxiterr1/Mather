@@ -89,9 +89,9 @@ class Expression
             for (int i = 0; i < openParenthesisCount; i++)
             {
                 insideParenthesis.Add(new List<char>());
-                //Continuare: cammbiare openParenthesis.Count() + 1; j < closeParenthesis.Last()
+                //Continuare trovare l'espressione corretta per il for
                 //Guardare appunti sul quadernino
-                for (int j = openParenthesis.Count() + 1; j < closeParenthesis.Last(); j++)
+                for (int j = openParenthesis.Last() - i * 2 + 1; j < closeParenthesis.First() + i; j++)
                     insideParenthesis[i].Add(charExpression[j]);
                 if (insideParenthesis[i].Count == 0)
                 {
@@ -105,7 +105,7 @@ class Expression
                     return null;
                 }
             }
-            Console.WriteLine($"ins {insideParenthesis[0].ElementAt(0)}");
+            //Console.WriteLine($"ins {insideParenthesis[0].ElementAt(0)}");
         }
 
         return null;//openParenthesisCount.ToString();

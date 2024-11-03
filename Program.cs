@@ -56,7 +56,7 @@ namespace Program
         }
 
         public static void ErroreSintassi(string err){
-            Console.Write("Errore di sintassi: " + err);
+            Console.Write("Errore di sintassi: " + err + "\n");
         }
     }
 }
