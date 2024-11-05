@@ -71,11 +71,9 @@ class Expression
                         while (!bastaNumeri);
 
                         //Invertiamo i numeri. Vengono "letti" da destra a sinistra perciò saranno al contrario
-                        numeriPrima[count[0]] = Programma.Reverse(numeriPrima[count[0]]);
-                        Console.WriteLine(numeriPrima[count[0]]);        
+                        numeriPrima[count[0]] = Programma.Reverse(numeriPrima[count[0]]); 
                     }
                     count[0]++;
-                    Console.WriteLine($"Parentesi aperta trovata alla posizione {i}");
                 }
                 else if (charExpression[i] == ')')
                 {
@@ -86,29 +84,34 @@ class Expression
                 }
             }
             List<List<char>> insideParenthesis = new List<List<char>>();
-            for (int i = 0; i < openParenthesisCount; i++)
+
+            //oPi: una 'i' di openParenthesis. cPi: una 'i' di closeParenthesis, usata
+            //anche come 'i' normale siccome parte da 0
+            for (int oPi = openParenthesisCount - 1, cPi = 0; cPi < openParenthesisCount; oPi--, cPi++)
             {
                 insideParenthesis.Add(new List<char>());
-                //Continuare trovare l'espressione corretta per il for
-                //Guardare appunti sul quadernino
-                for (int j = openParenthesis.Last() - i * 2 + 1; j < closeParenthesis.First() + i; j++)
-                    insideParenthesis[i].Add(charExpression[j]);
-                if (insideParenthesis[i].Count == 0)
+                //Continuare: implementare mettere parentesi una non dentro l'altra
+                if (closeParenthesis[cPi] < openParenthesis[oPi])
                 {
-                    Programma.ErroreSintassi("ciao");
+                    Console.WriteLine("NON IMPLEMENTATO: Parentesi non annidate!!1");
                     return null;
                 }
-                last = insideParenthesis[i].Last();
+                for (int j = openParenthesis[oPi] + 1; j < closeParenthesis[cPi]; j++)
+                    insideParenthesis[cPi].Add(charExpression[j]);
+                if (insideParenthesis[cPi].Count == 0)
+                {
+                    Programma.ErroreSintassi($"La {oPi + 1}° parentesi è vuota!");
+                    return null;
+                }
+                last = insideParenthesis[cPi].Last();
                 if (last == '+' || last == '-' || last == '^' || last == '*' || last == '/' || last == '.')
                 {
                     Programma.ErroreSintassi($"Non puoi inserire '{last}' come ultimo carattere nella parentesi");
                     return null;
                 }
             }
-            //Console.WriteLine($"ins {insideParenthesis[0].ElementAt(0)}");
         }
-
-        return null;//openParenthesisCount.ToString();
+        return null;
     }
 
     public static bool ExprValidCharacter(char c)
