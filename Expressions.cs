@@ -87,17 +87,28 @@ class Expression
 
             //oPi: una 'i' di openParenthesis. cPi: una 'i' di closeParenthesis, usata
             //anche come 'i' normale siccome parte da 0
+            bool indented = false;
             for (int oPi = openParenthesisCount - 1, cPi = 0; cPi < openParenthesisCount; oPi--, cPi++)
             {
                 insideParenthesis.Add(new List<char>());
-                //Continuare: implementare mettere parentesi una non dentro l'altra
+
+                //se le parentesi sono indentate
                 if (closeParenthesis[cPi] < openParenthesis[oPi])
                 {
-                    Console.WriteLine("NON IMPLEMENTATO: Parentesi non annidate!!1");
-                    return null;
+                    indented = true;
+                    //continuare qui!!!!!!!
+                    for (int j = openParenthesis[oPi] + 1; j < closeParenthesis[cPi + oPi]; j++)
+                        insideParenthesis[cPi].Add(charExpression[j]);
                 }
-                for (int j = openParenthesis[oPi] + 1; j < closeParenthesis[cPi]; j++)
-                    insideParenthesis[cPi].Add(charExpression[j]);
+                else
+                {
+                    if (!indented)
+                        for (int j = openParenthesis[oPi] + 1; j < closeParenthesis[cPi]; j++)
+                            insideParenthesis[cPi].Add(charExpression[j]);
+                    else
+                        for (int j = openParenthesis[oPi] + 1; j < closeParenthesis[cPi - 1]; j++)
+                            insideParenthesis[cPi].Add(charExpression[j]);                    
+                }
                 if (insideParenthesis[cPi].Count == 0)
                 {
                     Programma.ErroreSintassi($"La {oPi + 1}° parentesi è vuota!");
