@@ -87,26 +87,25 @@ class Expression
 
             //oPi: una 'i' di openParenthesis. cPi: una 'i' di closeParenthesis, usata
             //anche come 'i' normale siccome parte da 0
-            bool indented = false;
+            bool annidated = true;
             for (int oPi = openParenthesisCount - 1, cPi = 0; cPi < openParenthesisCount; oPi--, cPi++)
             {
                 insideParenthesis.Add(new List<char>());
 
-                //se le parentesi sono indentate
-                if (closeParenthesis[cPi] < openParenthesis[oPi])
+                //se le parentesi non sono annidate
+                if (closeParenthesis[cPi] < openParenthesis[oPi] && annidated)
                 {
-                    indented = true;
-                    //continuare qui!!!!!!!
+                    annidated = false;
                     for (int j = openParenthesis[oPi] + 1; j < closeParenthesis[cPi + oPi]; j++)
                         insideParenthesis[cPi].Add(charExpression[j]);
                 }
                 else
                 {
-                    if (!indented)
+                    if (annidated)
                         for (int j = openParenthesis[oPi] + 1; j < closeParenthesis[cPi]; j++)
                             insideParenthesis[cPi].Add(charExpression[j]);
-                    else
-                        for (int j = openParenthesis[oPi] + 1; j < closeParenthesis[cPi - 1]; j++)
+                    else //CONTINUA AQUI problema strano
+                        for (int j = openParenthesis[oPi] + 1; j < closeParenthesis[oPi]; j++)
                             insideParenthesis[cPi].Add(charExpression[j]);                    
                 }
                 if (insideParenthesis[cPi].Count == 0)
@@ -121,6 +120,7 @@ class Expression
                     return null;
                 }
             }
+            insideParenthesis.Reverse();
         }
         return null;
     }
