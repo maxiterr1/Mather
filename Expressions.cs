@@ -96,7 +96,7 @@ class Expression
                 if (closeParenthesis[cPi] < openParenthesis[oPi] && annidated)
                 {
                     annidated = false;
-                    for (int j = openParenthesis[oPi] + 1; j < closeParenthesis[cPi + oPi]; j++)
+                    for (int j = openParenthesis[oPi] + 1; j < closeParenthesis[cPi + oPi] - 1; j++)
                         insideParenthesis[cPi].Add(charExpression[j]);
                 }
                 else
@@ -106,7 +106,10 @@ class Expression
                             insideParenthesis[cPi].Add(charExpression[j]);
                     else //CONTINUA AQUI problema strano
                         for (int j = openParenthesis[oPi] + 1; j < closeParenthesis[oPi]; j++)
-                            insideParenthesis[cPi].Add(charExpression[j]);                    
+                        {
+                            if (charExpression[j] == ')') break;
+                            insideParenthesis[cPi].Add(charExpression[j]);   
+                        }              
                 }
                 if (insideParenthesis[cPi].Count == 0)
                 {
