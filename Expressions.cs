@@ -93,9 +93,14 @@ class Expression
                 insideParenthesis.Add(new List<char>());
 
                 //se le parentesi non sono annidate
-                if (closeParenthesis[cPi] < openParenthesis[oPi] && annidated)
+    			int paCount = 0;            
+				if (closeParenthesis[cPi] < openParenthesis[oPi] && annidated)
                 {
                     annidated = false;
+					int soPi = cPi;
+					int scPi = oPi;
+					if (closeParenthesis[scPi] < openParenthesis[soPi])
+						paCount++;
                     for (int j = openParenthesis[oPi] + 1; j < closeParenthesis[cPi + oPi] - 1; j++)
                         insideParenthesis[cPi].Add(charExpression[j]);
                 }
